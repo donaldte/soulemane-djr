@@ -1,20 +1,30 @@
 import requests 
 from getpass import getpass
-endpoint = "http://localhost:8000/api/login/"
+endpoint = "http://localhost:8000/api/token/"
 username = input("Enter username: ")
 password = getpass("Enter password: ")
 response = requests.post(endpoint, json={'username': username, 'password': password})
 
-token = response.json()['token']
+status_code = response.status_code
 endpoint = 'http://localhost:8000/api/mixins/'
-
-if token:
-    headers = {
-        'Authorization': f'Token {token}' #{'Barear' {tokent}}
+data = {
+        'name': 'New Product 100',
+        'description': 'New Product Description',
+        'price': 1000.00,
+        'email': 'donald@gmail.com'
     }
-    response = requests.get(endpoint, headers=headers)
+if status_code == 200:
+    print(response.json())
+    token = response.json()['access']
+    print('Token:', token)
+    headers = {
+        'Authorization': f'Bearer {token}' #{'Bearer' {tokent}}
+    }
+    
+    response = requests.post(endpoint, json=data,  headers=headers)
     
     print(response.json())
 
 else:
+    response = requests.post(endpoint, json=data)
     print(response.text)      
