@@ -1,0 +1,17 @@
+les type de test:
+
+ 1--> tests fontionnels(fonctional requirements)
+ 2--> tests non fontionnels (non fonctionnal requirements)
+
+I- les tests fonctionnels 
+
+  a. --> tests unitaires 
+  b. --> test d'integrations 
+  c. --> test de regression 
+  d. --> end to end testing 
+
+  TDD Test Driven Development 
+        -- d'ecrire d'abord le test avant de developper la fonctionalite
+        -- tu developpes la fonctionalite 
+        -- relance du test 
+        -- refactor ( c'est d'ameleorer ta fonctionalite )
